@@ -46,10 +46,20 @@ st.set_page_config(
     initial_sidebar_state='expanded',
 )
 
+# DB_CONFIG = {
+    # 'host': 'localhost', 'port': 5432,
+    # 'dbname': 'postgres', 'user': 'postgres', 'password': '12345',
+# }
+
 DB_CONFIG = {
-    'host': 'localhost', 'port': 5432,
-    'dbname': 'postgres', 'user': 'postgres', 'password': '12345',
+    "host": "db.zswznbflebzcknfunnii.supabase.co",
+    "port": 5432,
+    "dbname": "postgres",
+    "user": "postgres",
+    "password": "Phun9126@123"
 }
+
+
 SCHEMA = 'public'
 
 # Country code mapping (ISO-3 → tên đầy đủ)
