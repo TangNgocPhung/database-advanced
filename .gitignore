@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.pyc
+
+# Data (RẤT NẶNG - KHÔNG UP)
+crawled_data/
+wiki_data/
+student_essays_pdf/
+icnale_combined/
+
+# Model (KHÔNG UP)
+t5_spell_checker/
+*.pt
+*.pth
+*.h5
+*.bin
+
+# Notebook
+.ipynb_checkpoints/
+
+# SQL dump lớn
+*.sql
+
+# Cache / data
+*.pkl
+*.joblib
+
+# Environment
+venv/
+.env

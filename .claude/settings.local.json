@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(unzip -l \"C:\\\\Users\\\\Phung\\\\Downloads\\\\etl_sentences-main.zip\")",
+      "Bash(cd /tmp)",
+      "Bash(rm -rf etl_extract)",
+      "Bash(mkdir etl_extract)",
+      "Bash(unzip -o \"C:\\\\Users\\\\Phung\\\\Downloads\\\\etl_sentences-main.zip\" -d /tmp/etl_extract/)",
+      "Read(//tmp/etl_extract/**)",
+      "Bash(python -c \"import json; nb=json.load\\(open\\(r'C:\\\\Users\\\\Phung\\\\Desktop\\\\DatabaseAdvanced_Final\\\\CrawData_Nhom7_v3_PureCrawl.ipynb', encoding='utf-8'\\)\\); [print\\(i, c.get\\('id'\\), c['cell_type'], \\(''.join\\(c['source']\\)[:60]\\).replace\\(chr\\(10\\),' '\\)\\) for i,c in enumerate\\(nb['cells']\\)]\")"
+    ]
+  }
+}
