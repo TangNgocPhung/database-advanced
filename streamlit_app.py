@@ -52,11 +52,11 @@ st.set_page_config(
 # }
 
 DB_CONFIG = {
-    "host": "db.zswznbflebzcknfunnii.supabase.co",
+    "host": "aws-0-ap-south-1.pooler.supabase.com",
     "port": 5432,
     "dbname": "postgres",
-    "user": "postgres",
-    "password": "Phun9126@123"
+    "user": "postgres.zswznbflebzcknfunnii",
+    "password": "Phun9126@123",
 }
 
 
