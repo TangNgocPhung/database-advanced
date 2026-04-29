@@ -523,7 +523,11 @@ elif page == 'check':
         mdl.to(device).eval()
         return tok, mdl, device
 
-    model_path = st.text_input('Path tới model T5:', value='./t5_spell_checker')
+    model_path = st.text_input(
+        'Path tới model T5:',
+        value='NgocPhung/t5-english-spell-checker',
+        help='Repo ID trên Hugging Face Hub (vd: NgocPhung/t5-english-spell-checker) hoặc đường dẫn local nếu chạy offline.',
+    )
 
     tab1, tab2 = st.tabs(['✏️ Nhập text', '📁 Upload file'])
 
