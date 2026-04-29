@@ -3,39 +3,16 @@
 # Cài tất cả 1 lệnh:  pip install -r requirements.txt
 # =====================================================================
 
-# --- Core ---
-pandas>=2.0
-numpy>=1.24
-tqdm>=4.65
-requests>=2.31
-openpyxl>=3.1                      # đọc/ghi .xlsx
-
-# --- Database ---
-psycopg2-binary>=2.9               # kết nối PostgreSQL
-
-# --- Streamlit UI ---
-streamlit>=1.30                    # web framework
-plotly>=5.18                       # biểu đồ tương tác (pie/donut/heatmap/treemap/sunburst)
-
-# --- File parsing ---
-pdfplumber>=0.10                   # đọc PDF
-python-docx>=1.1                   # đọc/ghi DOCX
-reportlab>=4.0                     # render PDF (generate_pdf_essays.py)
-pillow>=10.0                       # xử lý ảnh
-pytesseract>=0.3.10                # OCR cho ảnh (cần cài Tesseract OCR engine riêng)
-
-# --- NLP ---
-nltk>=3.8                          # tokenize câu
-beautifulsoup4>=4.12                # parse HTML (crawl)
-lxml>=4.9                          # parser nhanh cho BS4
-sentencepiece>=0.1.99              # T5 tokenizer
-
-# --- Deep Learning (T5 model) ---
-torch>=2.1                         # PyTorch
-torchvision>=0.16                  # bổ sung utilities (image transforms, datasets) — user yêu cầu
-torchaudio>=2.1                    # đi cùng torch (cài kèm cho ổn định)
-transformers>=4.40                 # HuggingFace T5
-accelerate>=0.27                   # tăng tốc training
-datasets>=2.16                     # load HuggingFace datasets
-evaluate>=0.4                      # tính metrics (BLEU/GLEU)
-sacrebleu>=2.4                     # BLEU score
+streamlit
+pandas
+psycopg2-binary
+plotly
+python-docx
+pdfplumber
+pillow
+pytesseract
+requests
+transformers
+torch
+sentencepiece
+protobuf
