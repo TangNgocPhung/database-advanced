@@ -25,6 +25,7 @@ from difflib import SequenceMatcher
 from pathlib import Path
 
 import pandas as pd
+import requests
 import streamlit as st
 import psycopg2
 from psycopg2.extras import RealDictCursor
@@ -61,6 +62,32 @@ DB_CONFIG = {
 
 
 SCHEMA = 'public'
+
+# ============================================================
+# SUPABASE STORAGE — cho việc tải PDF gốc
+# ============================================================
+SUPABASE_URL = "https://zswznbflebzcknfunnii.supabase.co"
+SUPABASE_BUCKET = "essays"
+
+
+@st.cache_data(ttl=3600, show_spinner=False, max_entries=50)
+def fetch_pdf_from_supabase(storage_key: str) -> bytes | None:
+    """
+    Tải PDF từ Supabase Storage (public bucket).
+    Cache 1 giờ để tiết kiệm bandwidth.
+    Trả về None nếu file không tồn tại hoặc lỗi mạng.
+    """
+    if not storage_key:
+        return None
+    url = f"{SUPABASE_URL}/storage/v1/object/public/{SUPABASE_BUCKET}/{storage_key}"
+    try:
+        r = requests.get(url, timeout=30)
+        if r.status_code == 200:
+            return r.content
+        return None
+    except Exception:
+        return None
+
 
 # Country code mapping (ISO-3 → tên đầy đủ)
 COUNTRY_MAP = {
@@ -439,16 +466,19 @@ elif page == 'browse':
         if sel:
             doc_id, file_path = choices[sel]
 
-            # Nút download PDF
+            # Nút download PDF (lấy từ Supabase Storage)
             col_dl1, col_dl2 = st.columns([1, 4])
             with col_dl1:
-                if file_path and os.path.exists(file_path):
-                    with open(file_path, 'rb') as f:
-                        pdf_bytes = f.read()
+                pdf_bytes = fetch_pdf_from_supabase(file_path) if file_path else None
+                if pdf_bytes:
+                    # Tên file khi tải về: ưu tiên dùng title gốc nếu có
+                    download_name = sel.split(' — ')[1].split(' (')[0] if ' — ' in sel else f"{doc_id}.pdf"
+                    if not download_name.lower().endswith('.pdf'):
+                        download_name += '.pdf'
                     st.download_button(
                         '📥 Tải PDF gốc',
                         pdf_bytes,
-                        file_name=os.path.basename(file_path),
+                        file_name=download_name,
                         mime='application/pdf',
                     )
                 else:
