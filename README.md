@@ -2,7 +2,7 @@
 
 Ứng dụng web sử dụng **deep learning (T5-base)** để phát hiện và sửa lỗi chính tả trong bài luận tiếng Anh của học viên, được hỗ trợ bởi **PostgreSQL** với các tính năng nâng cao và **Streamlit** cho giao diện.
 
-**Web demo:** [![Open in Streamlit](https://database-advanced-lsx3ngnshttuvfka6tcsag.streamlit.app/)
+**Web demo:** [![Open in Streamlit] (https://database-advanced-lsx3ngnshttuvfka6tcsag.streamlit.app/)
 
 ---
 
