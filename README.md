@@ -324,7 +324,7 @@ So sánh hiệu năng giữa các phương pháp trên test set ICNALE:
 
 **Thành viên thực hiện:**
 
-1. Tăng Ngọc Phụng — KHMT836027
+1. *Tăng Ngọc Phụng* — *KHMT836027*
 2. *Hoàng Châu Ngọc Phương* — *KHMT836028*
 3. *Lê Thị Mai Len* — *KHMT836015*
 
