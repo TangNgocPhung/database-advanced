@@ -380,17 +380,33 @@ if HAS_PLOTLY:
 
 
 def _beautify_fig(fig):
-    """Áp dụng style chung cho mọi biểu đồ Plotly."""
+    """Áp dụng style chung cho mọi biểu đồ Plotly.
+    Đặc biệt: ép title=dict(text='') để Plotly.js không render 'undefined'."""
     if not HAS_PLOTLY or fig is None:
         return fig
+
+    # Lấy title text hiện tại (có thể None) → ép thành chuỗi an toàn
+    existing_title = ''
+    try:
+        if fig.layout.title and fig.layout.title.text:
+            existing_title = fig.layout.title.text
+    except Exception:
+        existing_title = ''
+
     fig.update_layout(
         font=dict(family='Inter, Segoe UI, sans-serif', size=12, color='#1E293B'),
-        title_font=dict(family='Plus Jakarta Sans, Inter', size=15, color='#1E293B'),
+        title=dict(
+            text=existing_title,                                    # luôn có 'text' → không còn 'undefined'
+            font=dict(family='Plus Jakarta Sans, Inter', size=15, color='#1E293B'),
+        ),
         paper_bgcolor='rgba(0,0,0,0)',
         plot_bgcolor='rgba(0,0,0,0)',
-        margin=dict(l=20, r=20, t=40, b=20),
+        margin=dict(l=20, r=20, t=30, b=20),
         legend=dict(bgcolor='rgba(255,255,255,0.6)', bordercolor='#E2E8F0', borderwidth=1),
     )
+    # Phòng hờ: nếu title vẫn là None sau khi update (do cache?), ép lần nữa
+    if fig.layout.title.text is None:
+        fig.layout.title.text = ''
     return fig
 
 
